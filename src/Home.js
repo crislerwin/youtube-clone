@@ -88,6 +88,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home({ darkMode, setDarkMode }) {
+  const searchVideo = (event) => {
+    if (event.keyCode === 13) {
+      console.log(event.target.value);
+    }
+  };
   const classes = useStyles();
   const theme = useTheme();
 
@@ -120,9 +125,11 @@ function Home({ darkMode, setDarkMode }) {
                 <InputBase
                   className={classes.input}
                   placeholder="Pesquisar"
-                  inputProps={{ "aria-label": "search google maps" }}
+                  onKeyDown={(event) => {
+                    searchVideo(event);
+                  }}
                 />
-                <IconButton type="submit" aria-label="search">
+                <IconButton aria-label="search">
                   <SearchIcon />
                 </IconButton>
               </Paper>
@@ -362,8 +369,8 @@ function Home({ darkMode, setDarkMode }) {
           </Typography>
 
           <Grid container spacing={4}>
-            {videos.map((item, index) => (
-              <Grid item lg={3} md={4} sm={6} xs={12}>
+            {videos.map((item) => (
+              <Grid key={item.id} item lg={3} md={4} sm={6} xs={12}>
                 <Box>
                   <img
                     style={{ width: "100%" }}
