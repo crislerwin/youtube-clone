@@ -1,36 +1,36 @@
 import { API_KEY } from "../../../../env";
 import youtubeSearch from "youtube-api-v3-search";
 
-export const buscaVideoRequest = () => {
+export const searchVideoRequest = () => {
   return {
-    type: "BUSCA_VIDEO_REQUEST",
-    carregando: true,
-    erro: false,
+    type: "SEARCH_VIDEO_REQUEST",
+    loading: true,
+    error: false,
   };
 };
 
-export const buscaVideoSucess = (videos) => {
+export const searchVideoSucess = (videos) => {
   return {
-    type: "BUSCA_VIDEO_SUCCESS",
+    type: "SEARCH_VIDEO_SUCCESS",
     videos,
-    carregando: false,
-    erro: false,
+    loading: false,
+    error: false,
   };
 };
 
-export const buscaVideoError = () => {
+export const searchVideoError = () => {
   return {
-    type: "BUSCA_VIDEO_ERROR",
-    carregando: false,
-    erro: true,
+    type: "SEARCH_VIDEO_ERROR",
+    loading: false,
+    error: true,
   };
 };
 
-export const buscaVideo = (termo) => {
+export const searchVideo = (param) => {
   return (dispatch) => {
-    dispatch(buscaVideoRequest());
-    youtubeSearch(API_KEY, { q: termo })
-      .then((data) => dispatch(buscaVideoSucess(data.items)))
-      .catch(() => dispatch(buscaVideoError()));
+    dispatch(searchVideoRequest());
+    youtubeSearch(API_KEY, { q: param })
+      .then((data) => dispatch(searchVideoSucess(data.items)))
+      .catch(() => dispatch(searchVideoError()));
   };
 };

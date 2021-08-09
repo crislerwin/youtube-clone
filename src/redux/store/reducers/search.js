@@ -1,13 +1,32 @@
 const INITIAL_STATE = {
   videos: [],
+  loading: false,
+  error: false,
 };
-export default function searchReducer(state = INITIAL_STATE, action) {
+
+export default function busca(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case "SEARCH_VIDEOS":
+    case "SEARCH_VIDEO_REQUEST":
       return {
-        ...state,
-        videos: action.payload,
+        loading: true,
+        videos: [],
+        error: false,
       };
+
+    case "SEARCH_VIDEO_SUCCESS":
+      return {
+        loading: false,
+        videos: action.videos,
+        error: false,
+      };
+
+    case "SEARCH_VIDEO_ERROR":
+      return {
+        loading: false,
+        videos: [],
+        error: true,
+      };
+
     default:
       return state;
   }
