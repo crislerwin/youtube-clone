@@ -1,4 +1,4 @@
-import { API_KEY } from "../../../../env";
+import { API_KEY } from "../../../api/env";
 import youtubeSearch from "youtube-api-v3-search";
 
 export const searchVideoRequest = () => {
