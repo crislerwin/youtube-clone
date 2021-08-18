@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@material-ui/core";
-import store from "./redux/store";
+
 import Home from "./Home";
-import { Provider } from "react-redux";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -26,11 +25,9 @@ function App() {
   });
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Home darkMode={darkMode} setDarkMode={setDarkMode} />
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Home darkMode={darkMode} setDarkMode={setDarkMode} />
+    </ThemeProvider>
   );
 }
 

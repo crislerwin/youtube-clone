@@ -119,22 +119,25 @@ function Home({ darkMode, setDarkMode }) {
           />
 
           <div className={classes.grow} />
-          <Hidden mdDown>
-            <Box>
-              <Paper component="form" className={classes.search}>
-                <InputBase
-                  className={classes.input}
-                  placeholder="Pesquisar"
-                  onKeyDown={(event) => {
-                    searchVideo(event);
-                  }}
-                />
-                <IconButton aria-label="search">
-                  <SearchIcon />
-                </IconButton>
-              </Paper>
-            </Box>
-          </Hidden>
+          <div classsName={classes.grow}>
+            <Hidden mdDown>
+              <Box>
+                <Paper component="form" className={classes.search}>
+                  <InputBase
+                    className={classes.input}
+                    placeholder="Pesquisar"
+                    onKeyDown={(event) => {
+                      searchVideo(event);
+                    }}
+                  />
+                  <IconButton aria-label="search">
+                    <SearchIcon />
+                  </IconButton>
+                </Paper>
+              </Box>
+            </Hidden>
+          </div>
+
           <Switch
             value={darkMode}
             onChange={() => setDarkMode(!darkMode)}
