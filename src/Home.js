@@ -88,11 +88,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home({ darkMode, setDarkMode }) {
-  const searchVideo = (event) => {
-    if (event.keyCode === 13) {
-      console.log(event.target.value);
-    }
-  };
   const classes = useStyles();
   const theme = useTheme();
 
@@ -126,9 +121,6 @@ function Home({ darkMode, setDarkMode }) {
                   <InputBase
                     className={classes.input}
                     placeholder="Pesquisar"
-                    onKeyDown={(event) => {
-                      searchVideo(event);
-                    }}
                   />
                   <IconButton aria-label="search">
                     <SearchIcon />
